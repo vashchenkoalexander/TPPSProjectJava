@@ -16,9 +16,13 @@ public class User {
     @Column(name = "surr_Name")
     private String surrName;
 
-//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JsonManagedReference
+//    @OneToMany(mappedBy = "user")//, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    //@JsonManagedReference
 //    private List<TypesOfCredit> typesOfCredits;
+
+    @OneToOne()
+    @JoinColumn(name = "type_of_credit_id", referencedColumnName = "id")
+    private TypesOfCredit typeOfCredit;
 
     @Column(name = "earn_Money_Per_Year")
     private int earnMoneyPerYear;
