@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
 @Entity
-public class TypesOfCredit {
+public class TypeOfCredit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,7 +21,15 @@ public class TypesOfCredit {
 //    private User user;
 
     @OneToOne(mappedBy = "typeOfCredit")
+    @JsonBackReference
     private User user;
+
+    public TypeOfCredit(){}
+
+    public TypeOfCredit(String type_of_credit, int limitToCard){
+        this.type_of_credit = type_of_credit;
+        this.limitToCard = limitToCard;
+    }
 
     public Long getId(){
         return id;
@@ -46,6 +54,7 @@ public class TypesOfCredit {
     public void setLimitToCard(int limitToCard){
         this.limitToCard = limitToCard;
     }
+
 
 
 }

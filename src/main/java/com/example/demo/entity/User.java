@@ -1,9 +1,9 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import net.bytebuddy.utility.nullability.MaybeNull;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -22,7 +22,9 @@ public class User {
 
     @OneToOne()
     @JoinColumn(name = "type_of_credit_id", referencedColumnName = "id")
-    private TypesOfCredit typeOfCredit;
+    @JsonBackReference
+    @MaybeNull
+    private TypeOfCredit typeOfCredit;
 
     @Column(name = "earn_Money_Per_Year")
     private int earnMoneyPerYear;
@@ -33,15 +35,20 @@ public class User {
     @Column(name = "amount_Of_Saves")
     private int amountOfSaves;
 
+    @Column(name = "user_role")
+    @MaybeNull
+    private UserRole userRole;
+
     public User(){}
 
-    public User(String firstName, String surrName, int earnMoneyPerYear, String loansHistory, int amountDebitCards, int amountOfSaves){
+    public User(String firstName, String surrName, int earnMoneyPerYear, String loansHistory, int amountDebitCards, int amountOfSaves, @MaybeNull UserRole userRole){
         this.firstName = firstName;
         this.surrName = surrName;
         this.earnMoneyPerYear = earnMoneyPerYear;
         this.loansHistory = loansHistory;
         this.amountDebitCards = amountDebitCards;
         this.amountOfSaves = amountOfSaves;
+        this.userRole = userRole;
     }
 
     public void setId(Long id){
@@ -98,6 +105,14 @@ public class User {
 
     public int getAmountOfSaves(){
         return amountOfSaves;
+    }
+
+    public UserRole getUserRole(){
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole){
+        this.userRole = userRole;
     }
 
 }

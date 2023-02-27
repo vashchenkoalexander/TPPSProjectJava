@@ -1,10 +1,12 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.User;
+import com.example.demo.entity.UserRole;
 import com.example.demo.repository.IUserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -26,6 +28,24 @@ public class UserService {
     }
 
     public User createUser(User user){
+        if( user.getUserRole() != null){
+            switch (user.getUserRole()){
+                case USER:
+                    user.setUserRole(UserRole.USER);
+                break;
+                case ADMIN:
+                    user.setUserRole(UserRole.ADMIN);
+                    break;
+                case MODERATOR:
+                    user.setUserRole(UserRole.MODERATOR);
+                    break;
+                default:
+                    user.setUserRole(null);
+            }
+        } else {
+            user.setUserRole(null);
+        }
+
         return userRepository.save(user);
     }
 
