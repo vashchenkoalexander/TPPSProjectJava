@@ -1,9 +1,8 @@
 package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import net.bytebuddy.utility.nullability.MaybeNull;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
@@ -23,7 +22,6 @@ public class User {
     @OneToOne()
     @JoinColumn(name = "type_of_credit_id", referencedColumnName = "id")
     @JsonBackReference
-    @MaybeNull
     private TypeOfCredit typeOfCredit;
 
     @Column(name = "earn_Money_Per_Year")
@@ -36,12 +34,12 @@ public class User {
     private int amountOfSaves;
 
     @Column(name = "user_role")
-    @MaybeNull
+    @Enumerated(value = EnumType.STRING)
     private UserRole userRole;
 
     public User(){}
 
-    public User(String firstName, String surrName, int earnMoneyPerYear, String loansHistory, int amountDebitCards, int amountOfSaves, @MaybeNull UserRole userRole){
+    public User(String firstName, String surrName, int earnMoneyPerYear, String loansHistory, int amountDebitCards, int amountOfSaves, UserRole userRole){
         this.firstName = firstName;
         this.surrName = surrName;
         this.earnMoneyPerYear = earnMoneyPerYear;

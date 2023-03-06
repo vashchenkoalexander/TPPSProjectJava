@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class UserController {
     }
 
     @GetMapping("users")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<User> getAllUsers(){
         return userService.getAllUser();
     }
@@ -30,6 +32,12 @@ public class UserController {
     @PostMapping("new")
     public User createUser(@RequestBody User user){
         return userService.createUser(user);
+    }
+
+    @GetMapping("welcome")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
+    public String getWelcomepage(){
+        return "Hello app";
     }
 
 }
