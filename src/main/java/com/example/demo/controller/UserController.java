@@ -19,12 +19,13 @@ public class UserController {
     }
 
     @GetMapping("users")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<User> getAllUsers(){
         return userService.getAllUser();
     }
 
     @GetMapping("{id}")
+    @PreAuthorize("hasAuthority('USER')")
     public User getUserById(@PathVariable Long id){
         return userService.findById(id);
     }
@@ -35,7 +36,7 @@ public class UserController {
     }
 
     @GetMapping("welcome")
-    @PreAuthorize("hasAuthority('ROLE_USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String getWelcomepage(){
         return "Hello app";
     }
