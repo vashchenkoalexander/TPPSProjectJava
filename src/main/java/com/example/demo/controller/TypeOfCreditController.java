@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/tpps/v1/typeofcredit/")
 public class TypeOfCreditController {
 
-    private TypeOfCreditService typeOfCreditService;
+    private final TypeOfCreditService typeOfCreditService;
 
     public TypeOfCreditController(TypeOfCreditService typeOfCreditService){
         this.typeOfCreditService = typeOfCreditService;

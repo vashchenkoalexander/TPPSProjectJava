@@ -19,10 +19,10 @@ public class User {
 //    //@JsonManagedReference
 //    private List<TypesOfCredit> typesOfCredits;
 
-    @OneToOne()
-    @JoinColumn(name = "type_of_credit_id", referencedColumnName = "id")
-    @JsonBackReference
-    private TypeOfCredit typeOfCredit;
+//    @OneToOne()
+//    @JoinColumn(name = "type_of_credit_id", referencedColumnName = "id")
+//    @JsonBackReference
+//    private TypeOfCredit typeOfCredit;
 
     @Column(name = "earn_Money_Per_Year")
     private int earnMoneyPerYear;

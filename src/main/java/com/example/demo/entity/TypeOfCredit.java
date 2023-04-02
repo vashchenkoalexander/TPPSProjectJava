@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 
@@ -8,7 +9,7 @@ import jakarta.persistence.*;
 @Entity
 public class TypeOfCredit {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -21,9 +22,12 @@ public class TypeOfCredit {
 //    @JoinColumn(name="user_id", nullable=false)
 //    private User user;
 
-    @OneToOne(mappedBy = "typeOfCredit")
-    @JsonBackReference
-    private User user;
+//    @OneToOne(mappedBy = "typeOfCredit")
+//    @JsonBackReference
+//    private User user;
+
+    @OneToOne(mappedBy = "typeOfCredit", cascade = CascadeType.ALL)
+    private UserWithPass userWithPass;
 
     public TypeOfCredit(){}
 

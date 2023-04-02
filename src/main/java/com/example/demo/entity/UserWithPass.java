@@ -1,11 +1,14 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
+import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users_with_pass")
@@ -26,16 +29,22 @@ public class UserWithPass {
     @Nullable
     private UserRole role;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "type_of_credit_id", referencedColumnName = "id")
+    private TypeOfCredit typeOfCredit;
+
+
     @Column(name = "date_of_create_user")
     private LocalDateTime dateOfCreateUser;
 
     public UserWithPass(){}
 
-    public UserWithPass(String name, String login, String password, UserRole role) {
+    public UserWithPass(String name, String login, String password, UserRole role, TypeOfCredit typeOfCredit) {
         this.name = name;
         this.login = login;
         this.password = password;
         this.role = role;
+        this.typeOfCredit = typeOfCredit;
     }
 
     public void setId(Long id) {
@@ -84,6 +93,14 @@ public class UserWithPass {
 
     public LocalDateTime getDateOfCreateUser(){
         return this.dateOfCreateUser;
+    }
+
+    public void setTypeOfCredit(TypeOfCredit typeOfCredit){
+        this.typeOfCredit=typeOfCredit;
+    }
+
+    public TypeOfCredit getTypeOfCredit(){
+        return this.typeOfCredit;
     }
 
 }
