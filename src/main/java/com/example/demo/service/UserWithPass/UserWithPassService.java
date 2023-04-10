@@ -66,9 +66,10 @@ public class UserWithPassService {
     }
 
     public UserWithPass updateUserWithTypeOfCredit(UserWithPass userWP, Long id, Long TypeOfCreditId){
-        TypeOfCredit typeOfCredit = typesOfCreditRepository.findById(TypeOfCreditId).orElse(null);
+        TypeOfCredit typeOfCredit = typesOfCreditRepository.findById(TypeOfCreditId).orElseThrow(NullPointerException::new);
+        TypeOfCredit newTypeOfCredit = new TypeOfCredit(typeOfCredit.getId(), typeOfCredit.getType_of_credit(), typeOfCredit.getLimitToCard());
         UserWithPass userWithPass = updateUser(userWP, id);
-        userWithPass.setTypeOfCredit(typeOfCredit);
+        userWithPass.setTypeOfCredit(newTypeOfCredit);
         return userWithPass;
 
     }

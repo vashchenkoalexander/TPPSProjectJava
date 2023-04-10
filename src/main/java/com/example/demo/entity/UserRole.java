@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
+import jakarta.persistence.Enumerated;
 import org.springframework.security.core.GrantedAuthority;
+
 
 public enum UserRole implements GrantedAuthority {
     ADMIN,

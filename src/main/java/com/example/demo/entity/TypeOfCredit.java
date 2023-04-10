@@ -36,6 +36,12 @@ public class TypeOfCredit {
         this.limitToCard = limitToCard;
     }
 
+    public TypeOfCredit(Long id, String type_of_credit, int limitToCard) {
+        this.id = id;
+        this.type_of_credit = type_of_credit;
+        this.limitToCard = limitToCard;
+    }
+
     public Long getId(){
         return id;
     }

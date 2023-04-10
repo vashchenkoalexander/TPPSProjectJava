@@ -1,14 +1,12 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users_with_pass")
@@ -36,6 +34,10 @@ public class UserWithPass {
 
     @Column(name = "date_of_create_user")
     private LocalDateTime dateOfCreateUser;
+
+//    @Column(name = "roles")
+//    @ElementCollection
+//    private Set<UserRole> roles = new HashSet<>();
 
     public UserWithPass(){}
 
@@ -103,4 +105,11 @@ public class UserWithPass {
         return this.typeOfCredit;
     }
 
+//    public Set<UserRole> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(Set<UserRole> roles) {
+//        this.roles = roles;
+//    }
 }

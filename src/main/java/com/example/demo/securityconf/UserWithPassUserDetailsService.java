@@ -2,7 +2,6 @@ package com.example.demo.securityconf;
 
 import com.example.demo.entity.UserWithPass;
 import com.example.demo.repository.UserWithPassRepo.IUserWithPassRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,9 +12,14 @@ import java.util.Optional;
 @Component
 public class UserWithPassUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    IUserWithPassRepository userWithPassRepository;
 
+    private IUserWithPassRepository userWithPassRepository;
+
+    public UserWithPassUserDetailsService(IUserWithPassRepository userWithPassRepository) {
+        this.userWithPassRepository = userWithPassRepository;
+    }
+
+    public UserWithPassUserDetailsService(){}
 
 
     @Override
