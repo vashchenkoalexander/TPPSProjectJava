@@ -45,6 +45,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
+        <dependency>                                      <!--Tools for load code without restart server if you want to remove that things from start or enable !-->
+            <groupId>org.springframework.boot</groupId>   <!--		1. File | Settings | Build, Execution, Deployment | Compiler | Build project automatically-->
+            <artifactId>spring-boot-devtools</artifactId> <!--		2. File | Settings | Advanced Settings | Allow auto-make to start even if developed application is currently running-->
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -3,6 +3,7 @@ package com.example.demo.controller.UserWithPass;
 import com.example.demo.entity.UserWithPass;
 import com.example.demo.service.UserWithPass.UserWithPassService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

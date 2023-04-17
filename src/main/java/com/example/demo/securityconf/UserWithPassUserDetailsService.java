@@ -13,13 +13,12 @@ import java.util.Optional;
 public class UserWithPassUserDetailsService implements UserDetailsService {
 
 
-    private IUserWithPassRepository userWithPassRepository;
+    private final IUserWithPassRepository userWithPassRepository;
 
-    public UserWithPassUserDetailsService(IUserWithPassRepository userWithPassRepository) {
+
+    public UserWithPassUserDetailsService(IUserWithPassRepository userWithPassRepository){
         this.userWithPassRepository = userWithPassRepository;
     }
-
-    public UserWithPassUserDetailsService(){}
 
 
     @Override

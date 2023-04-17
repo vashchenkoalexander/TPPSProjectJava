@@ -42,7 +42,7 @@ public class UserWithPassService {
                 case USER -> userWithPass.setRole(UserRole.USER);
                 case MODERATOR -> userWithPass.setRole(UserRole.MODERATOR);
                 case ADMIN -> userWithPass.setRole(UserRole.ADMIN);
-                default -> userWithPass.setRole(null);
+                default -> userWithPass.setRole(UserRole.USER);
             }
         }
         System.out.println(userWithPass.getRole());
